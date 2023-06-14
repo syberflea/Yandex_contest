@@ -1,3 +1,6 @@
+"""
+Sum two nimbers from a file
+"""
 with open("input.txt") as inp:
     num_a, num_b = inp.readline().split()
     sum_num = int(num_a) + int(num_b)

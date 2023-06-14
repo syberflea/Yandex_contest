@@ -1,3 +1,6 @@
+"""
+Count occurrences in a string
+"""
 from collections import Counter
 jewels = input().strip()
 stones = input().strip()
