@@ -1,5 +1,5 @@
 """
-ID: 88414942
+ID: 88488632
 """
 from typing import List, Tuple
 ELEM = 0
@@ -35,5 +35,6 @@ def read_input() -> Tuple[int, List[int]]:
     return n, number_list
 
 
-len_street, numbers = read_input()
-print(" ".join(map(str, get_nearest_zero(len_street, numbers))))
+if __name__ == '__main__':
+    len_street, numbers = read_input()
+    print(*get_nearest_zero(len_street, numbers))

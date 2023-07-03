@@ -1,5 +1,5 @@
 """
-ID: 88446509
+ID: 88488602
 """
 from typing import List, Tuple
 from collections import Counter
@@ -32,5 +32,6 @@ def count_points(k: int, lines: List[str]) -> int:
     return points
 
 
-k, keyboard = read_input()
-print(count_points(k, keyboard))
+if __name__ == '__main__':
+    max_keys, keyboard = read_input()
+    print(count_points(max_keys, keyboard))

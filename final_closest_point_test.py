@@ -102,5 +102,6 @@ def read_input() -> Tuple[int, List[int]]:
     return n, number_list
 
 
-len_street, numbers = read_input()
-print(" ".join(map(str, get_nearest_zero_1(len_street, numbers))))
+if __name__ == '__main__':
+    len_street, numbers = read_input()
+    print(" ".join(map(str, get_nearest_zero_1(len_street, numbers))))
