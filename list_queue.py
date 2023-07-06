@@ -2,10 +2,8 @@ class Node:
     def __init__(self, value=None, next_elem=None):
         self.value = value
         self.next = next_elem
-
     def __str__(self):
         return self.value
-
     def __repr__(self):
         return f"Node(value={self.value}, next_elem={self.next})"
 
