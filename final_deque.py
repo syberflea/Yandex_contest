@@ -3,14 +3,7 @@ ID 88866234
 """
 from operator import attrgetter
 
-class DequeTopLimitException(Exception):
-    """Get deque upper limit"""
-    pass
-
-
-class DequeLowLimitException(Exception):
-    """get deque low limit"""
-
+from exceptions import DequeTopLimitException, DequeLowLimitException
 
 COMMANDS = {
     "push_back": "push_back",
@@ -22,7 +15,7 @@ COMMANDS = {
 
 class Deque:
     def __init__(self, n):
-        self.buffer = [None] * n
+        self.__buffer = [None] * n
         self.max_n = n
         self.head = 0
         self.tail = 0
@@ -36,7 +29,7 @@ class Deque:
             raise DequeTopLimitException("deque is full")
         if self.is_empty():
             self.head = (self.head - 1) % self.max_n
-        self.buffer[self.tail] = value
+        self.__buffer[self.tail] = value
         self.tail = (self.tail + 1) % self.max_n
         self.size += 1
 
@@ -45,7 +38,7 @@ class Deque:
             raise DequeTopLimitException("deque is full")
         if self.is_empty():
             self.tail = (self.tail + 1) % self.max_n
-        self.buffer[self.head] = value
+        self.__buffer[self.head] = value
         self.head = (self.head - 1) % self.max_n
         self.size += 1
 
@@ -53,8 +46,8 @@ class Deque:
         if self.is_empty():
             raise DequeLowLimitException("deque is empty")
         self.head = (self.head + 1) % self.max_n
-        head_value = self.buffer[self.head]
-        self.buffer[self.head] = None
+        head_value = self.__buffer[self.head]
+        self.__buffer[self.head] = None
         self.size -= 1
         if self.size == 0:
             self.head = self.tail = 0
@@ -64,8 +57,8 @@ class Deque:
         if self.is_empty():
             raise DequeLowLimitException("deque is empty")
         self.tail = (self.tail - 1) % self.max_n
-        tail_value = self.buffer[self.tail]
-        self.buffer[self.tail] = None
+        tail_value = self.__buffer[self.tail]
+        self.__buffer[self.tail] = None
         self.size -= 1
         if self.size == 0:
             self.head = self.tail = 0

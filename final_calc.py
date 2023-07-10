@@ -4,29 +4,26 @@ ID 88864381
 from collections import deque
 from operator import add, sub, floordiv, mul
 
+from exceptions import StackLimitException
+
 OPERATORS = {"+": add, "-": sub, "*": mul, "/": floordiv}
-
-
-class StackLimitException(Exception):
-    """Stack is empty."""
-    pass
 
 
 class Stack:
     def __init__(self):
-        self._items = deque()
+        self.__items = deque()
 
     def push(self, item):
-        self._items.append(item)
+        self.__items.append(item)
 
     def pop(self):
         try:
-            return self._items.pop()
+            return self.__items.pop()
         except IndexError:
             raise StackLimitException("getting element from an empty stack") from None
 
     def __repr__(self):
-        return f"Stack({list(self._items)})"
+        return f"Stack({list(self.__items)})"
 
 
 def calc(args):
