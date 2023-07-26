@@ -1,5 +1,5 @@
 from functools import reduce
-
+import time
 
 def evaluate(base, modulo, array):
     if not array:
@@ -33,7 +33,15 @@ def main():
     base = int(input())
     modulo = int(input())
     array_of_char = list(map(ord, input()))
+    # print(calc_hash(base, modulo, array_of_char))
+    # iterations = 100
+    # total_time = timeit("calc_hash(base, modulo, array_of_char)", number=100, globals=globals())
+    # print(f"Average time is {total_time / iterations:.2f} seconds")
+    t1 = time.perf_counter(), time.process_time()
     print(calc_hash(base, modulo, array_of_char))
+    t2 = time.perf_counter(), time.process_time()
+    print(f" Real time: {t2[0] - t1[0]:.2f} seconds")
+    print(f" CPU time: {t2[1] - t1[1]:.2f} seconds")
 
 
 if __name__ == "__main__":
